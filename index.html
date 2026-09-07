@@ -185,8 +185,12 @@
       </main>
     </div>
 
-    <!-- Decap CMS İlanlarını Çeken JavaScript -->
+<!-- Decap CMS İlanlarını Çeken JavaScript -->
     <script>
+      let allListings = [];
+      let currentModalIndex = 0;
+      let modalImageIndex = 0;
+
       async function fetchListings() {
         const container = document.getElementById('listings-container');
         try {
@@ -195,42 +199,136 @@
           
           const files = await response.json();
           container.innerHTML = '';
+          allListings = [];
 
           for (const file of files) {
             if (file.name.endsWith('.json') || file.name.endsWith('.md')) {
               const res = await fetch(file.download_url);
-const text = await res.text();
-const data = {
-  title: (text.match(/title:\s*"?([^"\r\n]+)"?/) || [])[1] || 'İlan',
-  price: (text.match(/price:\s*"?([^"\r\n]+)"?/) || [])[1] || '',
-  image: (text.match(/image:\s*"?([^"\r\n]+)"?/) || [])[1] || '',
-  category: (text.match(/category:\s*"?([^"\r\n]+)"?/) || [])[1] || 'Satılık',
-  location: (text.match(/location:\s*"?([^"\r\n]+)"?/) || [])[1] || 'Eskişehir'
-};
-              const card = document.createElement('div');
-              card.className = 'border border-[hsl(var(--border))] bg-[hsl(var(--card))] overflow-hidden flex flex-col justify-between';
-              card.innerHTML = `
-                <div>
-                  <div class="h-48 w-full bg-[hsl(var(--secondary))] relative overflow-hidden">
-                    <img src="${data.image || 'https://via.placeholder.com/400x300'}" alt="${data.title}" class="w-full h-full object-cover">
-                    <span class="absolute top-3 left-3 bg-[hsl(var(--accent))] text-[hsl(var(--primary))] text-[10px] font-bold px-2 py-1 uppercase tracking-wider">${data.category || 'İlan'}</span>
-                  </div>
-                  <div class="p-6">
-                    <h3 class="text-xl font-bold text-white">${data.title}</h3>
-                    <p class="text-xs text-[hsl(var(--muted-foreground))] mt-1">${data.location || 'Eskişehir'}</p>
-                    <p class="text-lg font-bold text-[hsl(var(--accent))] mt-4">${data.price || ''}</p>
-                  </div>
-                </div>
-                <div class="p-6 pt-0">
-                  <a href="${data.link || '#'}" target="_blank" class="block text-center border border-[hsl(var(--accent))] py-2.5 text-xs font-bold tracking-[.08em] text-[hsl(var(--accent))] hover:bg-[hsl(var(--accent))] hover:text-[hsl(var(--primary))] transition-colors">İLAN DETAYI</a>
-                </div>
-              `;
-              container.appendChild(card);
+              const text = await res.text();
+              
+              // Verileri metinden çekme
+              const titleMatch = text.match(/title:\s*"?([^"\r\n]+)"?/);
+              const priceMatch = text.match(/price:\s*"?([^"\r\n]+)"?/);
+              const categoryMatch = text.match(/category:\s*"?([^"\r\n]+)"?/);
+              const locationMatch = text.match(/location:\s*"?([^"\r\n]+)"?/);
+              const mapLinkMatch = text.match(/map_link:\s*"?([^"\r\n]+)"?/);
+              const descMatch = text.match(/description:\s*"?([\s\S]+?)"?(?=\n\w+:|$)/);
+
+              // Çoklu fotoğraf çekme
+              const images = [];
+              const imageRegex = /-\s*"?([^"\r\n]+\.(?:png|jpg|jpeg|webp))"?/gi;
+              let imgMatch;
+              while ((imgMatch = imageRegex.exec(text)) !== null) {
+                images.push(imgMatch[1]);
+              }
+              if (images.length === 0) {
+                const singleImgMatch = text.match(/image:\s*"?([^"\r\n]+)"?/);
+                if (singleImgMatch) images.push(singleImgMatch[1]);
+              }
+
+              const data = {
+                title: titleMatch ? titleMatch[1] : 'İlan',
+                price: priceMatch ? priceMatch[1] : '',
+                images: images.length > 0 ? images : ['https://via.placeholder.com/400x300'],
+                category: categoryMatch ? categoryMatch[1] : 'Satılık',
+                location: locationMatch ? locationMatch[1] : 'Eskişehir',
+                map_link: mapLinkMatch ? mapLinkMatch[1] : '',
+                description: descMatch ? descMatch[1].trim() : 'Açıklama bulunmuyor.'
+              };
+
+              allListings.push(data);
             }
           }
+
+          if (allListings.length === 0) {
+            container.innerHTML = '<p class="text-[hsl(var(--muted-foreground))] col-span-full">Henüz eklenmiş ilan bulunmuyor.</p>';
+            return;
+          }
+
+          allListings.forEach((data, index) => {
+            const card = document.createElement('div');
+            card.className = 'border border-[hsl(var(--border))] bg-[hsl(var(--card))] overflow-hidden flex flex-col justify-between';
+            card.innerHTML = `
+              <div>
+                <div class="h-48 w-full bg-[hsl(var(--secondary))] relative overflow-hidden">
+                  <img src="${data.images[0]}" alt="${data.title}" class="w-full h-full object-cover">
+                  <span class="absolute top-3 left-3 bg-[hsl(var(--accent))] text-[hsl(var(--primary))] text-[10px] font-bold px-2 py-1 uppercase tracking-wider">${data.category}</span>
+                </div>
+                <div class="p-6">
+                  <h3 class="text-xl font-bold text-white">${data.title}</h3>
+                  <p class="text-xs text-[hsl(var(--muted-foreground))] mt-1">📍 ${data.location}</p>
+                  <p class="text-xs text-gray-300 mt-2 line-clamp-2">${data.description}</p>
+                  <p class="text-lg font-bold text-[hsl(var(--accent))] mt-4">${data.price}</p>
+                </div>
+              </div>
+              <div class="p-6 pt-0 flex gap-2">
+                <button onclick="openModal(${index})" class="flex-1 text-center border border-[hsl(var(--accent))] py-2.5 text-xs font-bold tracking-[.08em] text-[hsl(var(--accent))] hover:bg-[hsl(var(--accent))] hover:text-[hsl(var(--primary))] transition-colors">İLAN DETAYI</button>
+                ${data.map_link ? `<a href="${data.map_link}" target="_blank" class="px-3 py-2.5 border border-gray-700 bg-gray-800 text-white text-xs font-bold hover:bg-gray-700 transition-colors flex items-center justify-center">🗺️ Harita</a>` : ''}
+              </div>
+            `;
+            container.appendChild(card);
+          });
+
         } catch (e) {
           container.innerHTML = '<p class="text-[hsl(var(--muted-foreground))] col-span-full">Henüz eklenmiş ilan bulunmuyor.</p>';
         }
+      }
+
+      // Modal (Pop-up) Fonksiyonları
+      function openModal(index) {
+        currentModalIndex = index;
+        modalImageIndex = 0;
+        renderModalContent();
+        document.getElementById('detail-modal').classList.remove('hidden');
+      }
+
+      function closeModal() {
+        document.getElementById('detail-modal').classList.add('hidden');
+      }
+
+      function navigateModal(direction) {
+        currentModalIndex = (currentModalIndex + direction + allListings.length) % allListings.length;
+        modalImageIndex = 0;
+        renderModalContent();
+      }
+
+      function changeModalImage(direction) {
+        const images = allListings[currentModalIndex].images;
+        modalImageIndex = (modalImageIndex + direction + images.length) % images.length;
+        renderModalContent();
+      }
+
+      function renderModalContent() {
+        const item = allListings[currentModalIndex];
+        const modalEl = document.getElementById('modal-content');
+
+        modalEl.innerHTML = `
+          <div class="relative h-64 w-full overflow-hidden rounded-lg bg-black">
+            <img src="${item.images[modalImageIndex]}" class="w-full h-full object-cover">
+            ${item.images.length > 1 ? `
+              <button onclick="changeModalImage(-1)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/60 text-white w-8 h-8 rounded-full font-bold">❮</button>
+              <button onclick="changeModalImage(1)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/60 text-white w-8 h-8 rounded-full font-bold">❯</button>
+              <div class="absolute bottom-2 right-2 bg-black/70 text-[10px] text-white px-2 py-0.5 rounded">
+                ${modalImageIndex + 1} / ${item.images.length}
+              </div>
+            ` : ''}
+          </div>
+          <div>
+            <span class="inline-block bg-[hsl(var(--accent))] text-[hsl(var(--primary))] text-[10px] font-bold px-2 py-0.5 uppercase mb-1">${item.category}</span>
+            <h3 class="text-2xl font-bold text-white">${item.title}</h3>
+            <p class="text-xs text-[hsl(var(--muted-foreground))] mt-1">📍 ${item.location}</p>
+            <p class="text-xl font-bold text-[hsl(var(--accent))] mt-2">${item.price}</p>
+            <div class="border-t border-gray-800 my-3 pt-3">
+              <h4 class="text-xs font-bold text-gray-400 uppercase mb-1">Açıklama</h4>
+              <p class="text-sm text-gray-200 whitespace-pre-line leading-relaxed">${item.description}</p>
+            </div>
+            ${item.map_link ? `
+              <div class="mt-4">
+                <a href="${item.map_link}" target="_blank" class="inline-block bg-[hsl(var(--accent))] text-[hsl(var(--primary))] font-bold px-4 py-2 text-xs rounded">🗺️ Google Maps Konumuna Git</a>
+              </div>
+            ` : ''}
+          </div>
+        `;
       }
 
       fetchListings();
