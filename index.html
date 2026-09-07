@@ -1,243 +1,294 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-    <title>Efsane Emlak | Eskişehir Şirintepe</title>
-    <meta name="description" content="Eskişehir Şirintepe ve Tepebaşı bölgesinde Emlak, Yapı İnşaat ve Otomotiv danışmanlık hizmetleri.">
-    <meta name="robots" content="index, follow">
-    <meta property="og:title" content="Efsane Emlak">
-    <meta property="og:description" content="Eskişehir'de Hayalinizdeki Ev, Arsa ve Güvenli Yatırımın Adresi.">
-    <meta property="og:type" content="website">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-    <style>
-      :root {
-        --background: 215 32% 12%;
-        --primary: 215 35% 15%;
-        --primary-foreground: 40 30% 96%;
-        --accent: 42 78% 48%;
-        --muted-foreground: 215 15% 65%;
-        --border: 215 25% 22%;
-        --card: 215 32% 17%;
-        --secondary: 215 25% 18%;
-      }
-      body {
-        font-family: 'Inter', sans-serif;
-        background-color: hsl(var(--background));
-        color: hsl(var(--primary-foreground));
-      }
-      .container-wide {
-        max-width: 1280px;
-        margin-left: auto;
-        margin-right: auto;
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
-      }
-      .font-mono-custom {
-        font-family: monospace;
-      }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Efsane Emlak - Gayrimenkul & Danışmanlık</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <style>
+    .line-clamp-2 {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  </style>
 </head>
-<body>
-    <div id="root">
-      <main class="noise overflow-hidden pb-20 lg:pb-0">
-        <a href="#main-content" class="sr-only focus:not-sr-only absolute left-4 top-4 z-[60] bg-[hsl(var(--accent))] px-4 py-2 text-sm font-bold text-[hsl(var(--primary))]">İçeriğe geç</a>
-        
-        <!-- Header -->
-        <header class="fixed inset-x-0 top-0 z-40 transition-all duration-300 bg-[hsl(var(--primary))] border-b border-[hsl(var(--border))]">
-          <div class="container-wide flex h-[76px] items-center justify-between">
-            <a href="#top" class="flex items-center gap-3">
-              <span class="relative flex h-10 w-10 shrink-0 items-center justify-center border border-[hsl(var(--accent)/.7)] bg-[hsl(var(--accent)/.08)]" aria-hidden="true">
-                <span class="absolute h-5 w-5 border border-[hsl(var(--accent))] rotate-45"></span>
-                <span class="relative font-bold text-lg text-[hsl(var(--accent))]">E</span>
-              </span>
-              <span class="leading-tight">
-                <span class="block text-[11px] font-bold tracking-[.22em] text-[hsl(var(--accent))]">EFSANE</span>
-                <span class="block text-[9px] font-medium tracking-[.13em] text-[hsl(var(--primary-foreground)/.66)]">EMLAK · YAPI · OTOMOTİV</span>
-              </span>
-            </a>
-            <nav class="hidden items-center gap-8 lg:flex" aria-label="Ana navigasyon">
-              <a href="#about" class="text-[12px] font-semibold tracking-[.12em] text-[hsl(var(--primary-foreground)/.75)] hover:text-[hsl(var(--accent))]">Kurumsal</a>
-              <a href="#listings" class="text-[12px] font-semibold tracking-[.12em] text-[hsl(var(--primary-foreground)/.75)] hover:text-[hsl(var(--accent))]">Tüm İlanlar</a>
-              <a href="https://efsaneemlakeskisehir.sahibinden.com/" target="_blank" rel="noreferrer" class="text-[12px] font-semibold tracking-[.12em] text-[hsl(var(--primary-foreground)/.75)] hover:text-[hsl(var(--accent))]">Sahibinden Mağazamız</a>
-              <a href="#contact" class="text-[12px] font-semibold tracking-[.12em] text-[hsl(var(--primary-foreground)/.75)] hover:text-[hsl(var(--accent))]">İletişim</a>
-              <a href="tel:+905449179439" class="ml-2 inline-flex items-center gap-2 border border-[hsl(var(--accent)/.6)] px-4 py-2.5 text-[12px] font-bold tracking-[.08em] text-[hsl(var(--accent))] hover:bg-[hsl(var(--accent))] hover:text-[hsl(var(--primary))]">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"></path></svg>
-                HEMEN ARA
-              </a>
-            </nav>
-          </div>
-        </header>
+<body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col justify-between">
 
-        <!-- Hero Section -->
-        <section id="top" class="relative flex min-h-[760px] items-end bg-[hsl(var(--primary))] pt-28 text-[hsl(var(--primary-foreground))] md:min-h-[820px]">
-          <div class="container-wide relative z-10 grid w-full grid-cols-1 gap-12 pb-14 md:pb-20 lg:grid-cols-[1fr_auto] lg:items-end">
-            <div class="max-w-[760px]">
-              <div class="mb-7 flex items-center gap-3 text-[11px] font-bold tracking-[.25em] text-[hsl(var(--accent))]">
-                <span class="h-px w-10 bg-[hsl(var(--accent))]"></span>ESKİŞEHİR · ŞİRİNTEPE
-              </div>
-              <h1 id="hero-title" class="max-w-4xl text-[clamp(2.5rem,6vw,5rem)] font-extrabold leading-[1.05] tracking-[-.04em]">
-                <span class="block">Eskişehir'de Hayalinizdeki Ev, Arsa ve</span>
-                <span class="text-[hsl(var(--accent))]">Güvenli Yatırımın Adresi</span>
-              </h1>
-              <p class="mt-8 max-w-[500px] text-[17px] leading-8 text-[hsl(var(--primary-foreground)/.72)]">
-                Emlak, Yapı İnşaat ve Otomotiv Sektöründe Yılların Verdiği Güvenle Hizmetinizdeyiz.
-              </p>
-              <div class="mt-10 flex flex-col gap-3 sm:flex-row">
-                <a href="tel:+905449179439" class="inline-flex items-center justify-center gap-3 bg-[hsl(var(--accent))] px-6 py-4 text-[13px] font-bold tracking-[.08em] text-[hsl(var(--primary))] hover:-translate-y-0.5 transition-transform">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"></path></svg>
-                  TIKLA ARA
-                </a>
-                <a href="https://efsaneemlakeskisehir.sahibinden.com/" target="_blank" rel="noreferrer" class="inline-flex items-center justify-center gap-3 border border-[hsl(var(--primary-foreground)/.35)] px-6 py-4 text-[13px] font-bold tracking-[.08em] hover:border-[hsl(var(--accent))] hover:text-[hsl(var(--accent))]">
-                  SAHİBİNDEN.COM MAĞAZAMIZI GÖR
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="py-24 md:py-32">
-          <div class="container-wide grid gap-14 lg:grid-cols-[.8fr_1.2fr]">
-            <div>
-              <div class="flex items-start gap-4">
-                <span class="font-mono-custom text-xs font-bold text-[hsl(var(--accent))]">01 /</span>
-                <p class="text-xs font-bold uppercase leading-5 tracking-[.14em] text-[hsl(var(--muted-foreground))]">Büyük kararlar, sade bir yol haritası ister.</p>
-              </div>
-            </div>
-            <div>
-              <h2 class="text-[clamp(2rem,4vw,3.5rem)] font-extrabold leading-[1.1] text-white">
-                Efsane, işinizi değil <em class="font-normal text-[hsl(var(--accent))]">hayatınızı</em> dinler.
-              </h2>
-              <div class="mt-9 grid gap-7 md:grid-cols-2 text-[15px] leading-7 text-[hsl(var(--muted-foreground))]">
-                <p>Bir ev, bir arsa, yeni bir iş yeri ya da hayatınıza eşlik edecek bir otomobil… Her kararın arkasında başka bir hikâye olduğunu biliyoruz.</p>
-                <p>Bu yüzden ezbere değil; bölgeyi bilen, süreci açıkça anlatan ve işini sonuna kadar takip eden bir danışmanlık sunuyoruz.</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Tüm İlanlar Bölümü (Dynamic Listings Section) -->
-        <section id="listings" class="bg-[hsl(var(--secondary))] py-24 md:py-32 border-t border-[hsl(var(--border))]">
-          <div class="container-wide">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
-              <div>
-                <span class="text-[11px] font-bold tracking-[.25em] text-[hsl(var(--accent))]">GÜNCEL PORTFÖYÜMÜZ</span>
-                <h2 class="text-[clamp(2rem,4vw,3.5rem)] font-extrabold mt-2">
-                  Tüm <span class="text-[hsl(var(--accent))]">İlanlar</span>
-                </h2>
-              </div>
-              <a href="https://efsaneemlakeskisehir.sahibinden.com/" target="_blank" rel="noreferrer" class="text-xs font-bold tracking-[.12em] text-[hsl(var(--accent))] hover:underline">SAHİBİNDEN.COM MAĞAZAMIZ →</a>
-            </div>
-
-            <!-- Dinamik İlan Listesi -->
-            <div id="listings-container" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              <p class="text-[hsl(var(--muted-foreground))] col-span-full">İlanlar yükleniyor...</p>
-            </div>
-          </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="py-24 md:py-32">
-          <div class="container-wide grid gap-8 lg:grid-cols-2">
-            <div>
-              <span class="text-[11px] font-bold tracking-[.25em] text-[hsl(var(--accent))]">BİZE ULAŞIN</span>
-              <h2 class="text-[clamp(2.5rem,5vw,4rem)] font-extrabold mt-2">Bir kahve, <span class="text-[hsl(var(--accent))]">bir karar.</span></h2>
-              <div class="mt-8 grid gap-4">
-                <div class="border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-5">
-                  <span class="block text-[10px] font-bold uppercase text-[hsl(var(--muted-foreground))]">Telefon</span>
-                  <a href="tel:+905449179439" class="mt-1 block text-lg font-bold text-[hsl(var(--accent))]">0544 917 94 39</a>
-                </div>
-                <div class="border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-5">
-                  <span class="block text-[10px] font-bold uppercase text-[hsl(var(--muted-foreground))]">Ofis Adresi</span>
-                  <span class="mt-1 block text-sm font-bold">Şirintepe, Örme Sk. 32/a, 26190 Tepebaşı/Eskişehir</span>
-                </div>
-              </div>
-            </div>
-            <div class="min-h-[360px]">
-              <iframe title="Konum Haritası" src="https://www.google.com/maps?q=%C5%9Eirintepe%2C%20%C3%96rme%20Sk.%2032%2Fa%2C%2026190%20Tepeba%C5%9F%C4%B1%2FEski%C5%9Fehir&amp;output=embed" class="w-full h-full border-0 min-h-[300px]"></iframe>
-            </div>
-          </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="bg-[hsl(var(--primary))] border-t border-[hsl(var(--border))] py-10">
-          <div class="container-wide flex flex-col justify-between gap-6 md:flex-row md:items-center">
-            <p class="text-xs text-[hsl(var(--muted-foreground))]">© 2026 EFSANE EMLAK · Şirintepe / Eskişehir</p>
-            <div class="flex gap-6 text-[11px] font-bold">
-              <a href="#about" class="hover:text-[hsl(var(--accent))]">Kurumsal</a>
-              <a href="#listings" class="hover:text-[hsl(var(--accent))]">Tüm İlanlar</a>
-              <a href="#contact" class="hover:text-[hsl(var(--accent))]">İletişim</a>
-            </div>
-          </div>
-        </footer>
-      </main>
+  <!-- Header -->
+  <header class="border-b border-gray-800 bg-gray-950/80 backdrop-blur sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-amber-500 tracking-wide">EFSANE EMLAK</h1>
+      <nav class="space-x-4">
+        <a href="#listings" class="text-gray-300 hover:text-amber-500 transition">İlanlar</a>
+        <a href="/admin" class="bg-amber-500 text-gray-950 font-semibold px-4 py-2 rounded-lg hover:bg-amber-400 transition">Yönetim Paneli</a>
+      </nav>
     </div>
+  </header>
 
-    <!-- Decap CMS İlanlarını Çeken JavaScript -->
-    <script>
-      async function fetchListings() {
-        const container = document.getElementById('listings-container');
-        try {
-          const response = await fetch('https://api.github.com/repos/efsaneemlaksite/efsane-emlak2/contents/content/listings');
-          if (!response.ok) throw new Error('İlanlar bulunamadı');
-          
-          const files = await response.json();
-          container.innerHTML = '';
+  <!-- Hero -->
+  <section class="py-12 text-center bg-gradient-to-b from-gray-950 to-gray-900 border-b border-gray-800">
+    <h2 class="text-4xl font-extrabold text-white mb-3">Hayalinizdeki Gayrimenkulü Bulun</h2>
+    <p class="text-gray-400 text-lg max-w-xl mx-auto">Eskişehir ve çevresindeki en güncel satılık ve kiralık ilanlar.</p>
+  </section>
 
-          for (const file of files) {
-            if (file.name.endsWith('.json') || file.name.endsWith('.md')) {
-              const res = await fetch(file.download_url);
-const text = await res.text();
-const data = {
-  title: (text.match(/title:\s*"?([^"\r\n]+)"?/) || [])[1] || 'İlan',
-  price: (text.match(/price:\s*"?([^"\r\n]+)"?/) || [])[1] || '',
-  image: (text.match(/image:\s*"?([^"\r\n]+)"?/) || [])[1] || '',
-  category: (text.match(/category:\s*"?([^"\r\n]+)"?/) || [])[1] || 'Satılık',
-  location: (text.match(/location:\s*"?([^"\r\n]+)"?/) || [])[1] || 'Eskişehir'
-};
-              const card = document.createElement('div');
-              card.className = 'border border-[hsl(var(--border))] bg-[hsl(var(--card))] overflow-hidden flex flex-col justify-between';
-              card.innerHTML = `
-                <div>
-                  <div class="h-48 w-full bg-[hsl(var(--secondary))] relative overflow-hidden">
-                    <img src="${data.image || 'https://via.placeholder.com/400x300'}" alt="${data.title}" class="w-full h-full object-cover">
-                    <span class="absolute top-3 left-3 bg-[hsl(var(--accent))] text-[hsl(var(--primary))] text-[10px] font-bold px-2 py-1 uppercase tracking-wider">${data.category || 'İlan'}</span>
-                  </div>
-                  <div class="p-6">
-                    <h3 class="text-xl font-bold text-white">${data.title}</h3>
-                    <p class="text-xs text-[hsl(var(--muted-foreground))] mt-1">${data.location || 'Eskişehir'}</p>
-                    <p class="text-lg font-bold text-[hsl(var(--accent))] mt-4">${data.price || ''}</p>
-                  </div>
-                </div>
-                <div class="p-6 pt-0">
-                  <a href="${data.link || '#'}" target="_blank" class="block text-center border border-[hsl(var(--accent))] py-2.5 text-xs font-bold tracking-[.08em] text-[hsl(var(--accent))] hover:bg-[hsl(var(--accent))] hover:text-[hsl(var(--primary))] transition-colors">İLAN DETAYI</a>
-                </div>
-              `;
-              container.appendChild(card);
-            }
-          }
-        } catch (e) {
-          container.innerHTML = '<p class="text-[hsl(var(--muted-foreground))] col-span-full">Henüz eklenmiş ilan bulunmuyor.</p>';
+  <!-- Listings -->
+  <main id="listings" class="max-w-7xl mx-auto px-4 py-12 flex-grow w-full">
+    <h3 class="text-2xl font-bold text-white mb-8 border-l-4 border-amber-500 pl-3">Tüm İlanlar</h3>
+    
+    <div id="loading" class="text-center text-gray-400 py-12">İlanlar yükleniyor...</div>
+    <div id="empty" class="hidden text-center text-gray-500 py-12">Henüz eklenmiş bir ilan bulunmuyor.</div>
+
+    <div id="listings-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+  </main>
+
+  <!-- Modal / Detail Popup -->
+  <div id="detail-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-gray-900 border border-gray-800 rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto relative p-6 shadow-2xl">
+      
+      <!-- Close Button -->
+      <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white bg-gray-800 hover:bg-gray-700 w-10 h-10 rounded-full flex items-center justify-center z-20 text-xl font-bold transition">
+        ✕
+      </button>
+
+      <!-- Navigation Arrows -->
+      <button onclick="navigateModal(-1)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-gray-800/80 hover:bg-amber-500 text-white hover:text-gray-950 w-10 h-10 rounded-full flex items-center justify-center z-20 text-xl font-bold transition">
+        ❮
+      </button>
+      <button onclick="navigateModal(1)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-gray-800/80 hover:bg-amber-500 text-white hover:text-gray-950 w-10 h-10 rounded-full flex items-center justify-center z-20 text-xl font-bold transition">
+        ❯
+      </button>
+
+      <!-- Modal Content -->
+      <div id="modal-content" class="space-y-6"></div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="border-t border-gray-800 bg-gray-950 py-6 text-center text-gray-500 text-sm">
+    <p>&copy; 2026 Efsane Emlak. Tüm hakları saklıdır.</p>
+  </footer>
+
+  <script>
+    let allListings = [];
+    let currentModalIndex = 0;
+
+    function parseFrontmatter(text) {
+      const match = text.match(/^---\r?\n([\s\S]+?)\r?\n---/);
+      if (!match) return {};
+      const yaml = match[1];
+      const data = {};
+      
+      const titleMatch = yaml.match(/title:\s*"?([^"\r\n]+)"?/);
+      const priceMatch = yaml.match(/price:\s*"?([^"\r\n]+)"?/);
+      const categoryMatch = yaml.match(/category:\s*"?([^"\r\n]+)"?/);
+      const locationMatch = yaml.match(/location:\s*"?([^"\r\n]+)"?/);
+      const mapLinkMatch = yaml.match(/map_link:\s*"?([^"\r\n]+)"?/);
+      const descMatch = yaml.match(/description:\s*"?([\s\S]+?)"?(?=\n\w+:|$)/);
+
+      if (titleMatch) data.title = titleMatch[1];
+      if (priceMatch) data.price = priceMatch[1];
+      if (categoryMatch) data.category = categoryMatch[1];
+      if (locationMatch) data.location = locationMatch[1];
+      if (mapLinkMatch) data.map_link = mapLinkMatch[1];
+      if (descMatch) data.description = descMatch[1].trim();
+
+      // Extract image list
+      data.images = [];
+      const imageRegex = /-\s*"?([^"\r\n]+\.(?:png|jpg|jpeg|webp))"?/gi;
+      let imgMatch;
+      while ((imgMatch = imageRegex.exec(yaml)) !== null) {
+        data.images.push(imgMatch[1]);
+      }
+      
+      // Fallback single image check
+      if (data.images.length === 0) {
+        const singleImgMatch = yaml.match(/image:\s*"?([^"\r\n]+)"?/);
+        if (singleImgMatch) data.images.push(singleImgMatch[1]);
+      }
+
+      return data;
+    }
+
+    async function fetchListings() {
+      const container = document.getElementById('listings-grid');
+      const loading = document.getElementById('loading');
+      const empty = document.getElementById('empty');
+
+      try {
+        const response = await fetch('https://api.github.com/repos/efsaneemlaksite/efsane-emlak2/contents/content/listings');
+        if (!response.ok) throw new Error('İlanlar çekilemedi');
+
+        const files = await response.json();
+        const mdFiles = files.filter(f => f.name.endsWith('.md'));
+
+        if (mdFiles.length === 0) {
+          loading.classList.add('hidden');
+          empty.classList.remove('hidden');
+          return;
         }
-      }
 
-      fetchListings();
+        allListings = [];
 
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", user => {
-          if (!user) {
-            window.netlifyIdentity.on("login", () => {
-              document.location.href = "/admin/";
-            });
-          }
-        });
+        for (const file of mdFiles) {
+          const res = await fetch(file.download_url);
+          const text = await res.text();
+          const item = parseFrontmatter(text);
+          allListings.push(item);
+        }
+
+        loading.classList.add('hidden');
+        renderGrid();
+
+      } catch (err) {
+        console.error(err);
+        loading.classList.add('hidden');
+        empty.classList.remove('hidden');
       }
-    </script>
+    }
+
+    function renderGrid() {
+      const container = document.getElementById('listings-grid');
+      container.innerHTML = '';
+
+      allListings.forEach((item, index) => {
+        const card = document.createElement('div');
+        card.className = "bg-gray-800 border border-gray-700/60 rounded-xl overflow-hidden shadow-lg flex flex-col justify-between hover:border-amber-500/50 transition";
+        
+        const images = item.images.length > 0 ? item.images : ['https://via.placeholder.com/400x300?text=Görsel+Yok'];
+        
+        let sliderHTML = `
+          <div class="relative h-52 w-full overflow-hidden bg-gray-950 group">
+            <div id="card-slider-${index}" class="flex h-full transition-transform duration-300">
+              ${images.map(img => `<img src="${img}" class="w-full h-full object-cover flex-shrink-0">`).join('')}
+            </div>
+            ${images.length > 1 ? `
+              <button onclick="moveCardSlider(${index}, -1)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black text-white p-1 rounded-full text-xs opacity-0 group-hover:opacity-100 transition">❮</button>
+              <button onclick="moveCardSlider(${index}, 1)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black text-white p-1 rounded-full text-xs opacity-0 group-hover:opacity-100 transition">❯</button>
+            ` : ''}
+            <span class="absolute top-3 left-3 bg-amber-500 text-gray-950 font-bold text-xs px-2.5 py-1 rounded-md uppercase">
+              ${item.category || 'Satılık'}
+            </span>
+          </div>
+        `;
+
+        card.innerHTML = `
+          ${sliderHTML}
+          <div class="p-5 flex-grow flex flex-col justify-between">
+            <div>
+              <h4 class="text-xl font-bold text-white mb-1">${item.title || 'İlan Başlığı'}</h4>
+              <p class="text-xs text-amber-500 mb-3">📍 ${item.location || 'Eskişehir'}</p>
+              <p class="text-sm text-gray-300 line-clamp-2 mb-4">${item.description || 'Açıklama belirtilmedi.'}</p>
+            </div>
+            
+            <div>
+              <div class="text-xl font-extrabold text-amber-400 mb-4">${item.price ? item.price + ' TL' : ''}</div>
+              
+              <div class="flex gap-2">
+                <button onclick="openModal(${index})" class="flex-1 bg-amber-500 hover:bg-amber-400 text-gray-950 font-bold py-2 px-3 rounded-lg text-sm text-center transition">
+                  Detaylar
+                </button>
+                ${item.map_link ? `
+                  <a href="${item.map_link}" target="_blank" class="bg-gray-700 hover:bg-gray-600 text-white font-medium py-2 px-3 rounded-lg text-sm text-center flex items-center justify-center transition">
+                    🗺️ Harita
+                  </a>
+                ` : ''}
+              </div>
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // Card Slider Engine
+    const sliderIndices = {};
+    function moveCardSlider(cardIndex, direction) {
+      if (!sliderIndices[cardIndex]) sliderIndices[cardIndex] = 0;
+      const imagesCount = allListings[cardIndex].images.length;
+      sliderIndices[cardIndex] = (sliderIndices[cardIndex] + direction + imagesCount) % imagesCount;
+      
+      const sliderEl = document.getElementById(`card-slider-${cardIndex}`);
+      sliderEl.style.transform = `translateX(-${sliderIndices[cardIndex] * 100}%)`;
+    }
+
+    // Modal Engine
+    let modalImageIndex = 0;
+    function openModal(index) {
+      currentModalIndex = index;
+      modalImageIndex = 0;
+      renderModalContent();
+      document.getElementById('detail-modal').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('detail-modal').classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    }
+
+    function navigateModal(direction) {
+      currentModalIndex = (currentModalIndex + direction + allListings.length) % allListings.length;
+      modalImageIndex = 0;
+      renderModalContent();
+    }
+
+    function renderModalContent() {
+      const item = allListings[currentModalIndex];
+      const images = item.images.length > 0 ? item.images : ['https://via.placeholder.com/600x400?text=Görsel+Yok'];
+      const modalEl = document.getElementById('modal-content');
+
+      modalEl.innerHTML = `
+        <!-- Modal Image Slider -->
+        <div class="relative h-72 sm:h-96 w-full rounded-xl overflow-hidden bg-gray-950 group">
+          <img src="${images[modalImageIndex]}" class="w-full h-full object-cover">
+          ${images.length > 1 ? `
+            <button onclick="changeModalImage(-1)" class="absolute left-3 top-1/2 -translate-y-1/2 bg-black/70 hover:bg-black text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">❮</button>
+            <button onclick="changeModalImage(1)" class="absolute right-3 top-1/2 -translate-y-1/2 bg-black/70 hover:bg-black text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">❯</button>
+            <div class="absolute bottom-3 right-3 bg-black/70 text-xs text-white px-2.5 py-1 rounded-full">
+              ${modalImageIndex + 1} / ${images.length}
+            </div>
+          ` : ''}
+        </div>
+
+        <!-- Info -->
+        <div>
+          <div class="flex justify-between items-start gap-4 mb-2">
+            <div>
+              <span class="inline-block bg-amber-500 text-gray-950 text-xs font-bold px-2 py-0.5 rounded mb-2">${item.category || 'Satılık'}</span>
+              <h3 class="text-2xl font-extrabold text-white">${item.title || 'İlan Başlığı'}</h3>
+              <p class="text-amber-500 text-sm mt-1">📍 ${item.location || 'Eskişehir'}</p>
+            </div>
+            <div class="text-2xl font-black text-amber-400 whitespace-nowrap">${item.price ? item.price + ' TL' : ''}</div>
+          </div>
+
+          <hr class="border-gray-800 my-4">
+
+          <div>
+            <h5 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-2">İlan Açıklaması</h5>
+            <p class="text-gray-200 leading-relaxed whitespace-pre-line text-sm">${item.description || 'Açıklama girilmemiş.'}</p>
+          </div>
+
+          ${item.map_link ? `
+            <div class="mt-6">
+              <a href="${item.map_link}" target="_blank" class="inline-flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-white font-semibold py-2.5 px-5 rounded-xl text-sm border border-gray-700 transition">
+                🗺️ Google Maps Konumuna Git
+              </a>
+            </div>
+          ` : ''}
+        </div>
+      `;
+    }
+
+    function changeModalImage(direction) {
+      const images = allListings[currentModalIndex].images;
+      modalImageIndex = (modalImageIndex + direction + images.length) % images.length;
+      renderModalContent();
+    }
+
+    document.addEventListener('DOMContentLoaded', fetchListings);
+  </script>
 </body>
 </html>
