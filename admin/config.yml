@@ -1,0 +1,20 @@
+backend:
+  name: git-gateway
+  branch: main # Depondaki ana dalın adı master ise master yap
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "listings"
+    label: "İlanlar"
+    folder: "content/listings"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "İlan Başlığı", name: "title", widget: "string" }
+      - { label: "Kategori", name: "category", widget: "select", options: ["Satılık Daire", "Kiralık Daire", "Arsa / Arazi", "İş Yeri", "Otomotiv"] }
+      - { label: "Fiyat", name: "price", widget: "string" }
+      - { label: "Konum / Mahalle", name: "location", widget: "string" }
+      - { label: "İlan Görseli", name: "image", widget: "image" }
+      - { label: "Sahibinden/İlan Detay Linki", name: "link", widget: "string" }
