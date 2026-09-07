@@ -193,8 +193,14 @@
           for (const file of files) {
             if (file.name.endsWith('.json') || file.name.endsWith('.md')) {
               const res = await fetch(file.download_url);
-              const data = await res.json();
-
+const text = await res.text();
+const data = {
+  title: (text.match(/title:\s*"?([^"\r\n]+)"?/) || [])[1] || 'İlan',
+  price: (text.match(/price:\s*"?([^"\r\n]+)"?/) || [])[1] || '',
+  image: (text.match(/image:\s*"?([^"\r\n]+)"?/) || [])[1] || '',
+  category: (text.match(/category:\s*"?([^"\r\n]+)"?/) || [])[1] || 'Satılık',
+  location: (text.match(/location:\s*"?([^"\r\n]+)"?/) || [])[1] || 'Eskişehir'
+};
               const card = document.createElement('div');
               card.className = 'border border-[hsl(var(--border))] bg-[hsl(var(--card))] overflow-hidden flex flex-col justify-between';
               card.innerHTML = `
