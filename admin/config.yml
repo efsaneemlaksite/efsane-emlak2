@@ -16,7 +16,7 @@ collections:
       - { label: "Fiyat", name: "price", widget: "string" }
       - { label: "Kategori", name: "category", widget: "select", options: ["Satılık", "Kiralık"], default: "Satılık" }
       - { label: "Konum (Şehir/İlçe)", name: "location", widget: "string", default: "Eskişehir" }
-      - { label: "Google Maps Linki", name: "map_link", widget: "string", required: false }
+      - { label: "Google Maps Linki", name: "map_link", widget: "string", required: false, hint: "Google Haritalar'da konumu bulup 'Paylaş' > 'Bağlantıyı kopyala' ile aldığınız linki yapıştırın (https:// ile başlamalı). Örn: https://maps.app.goo.gl/xxxxx" }
       - label: "Fotoğraflar"
         name: "images"
         widget: "list"
