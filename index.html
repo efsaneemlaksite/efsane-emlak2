@@ -223,10 +223,10 @@
               const descMatch = text.match(/description:\s*"?([\s\S]+?)"?(?=\n\w+:|$)/);
 
 const images = [];
-const imageRegex = /image:\s*"?([^"\r\n]+\.(?:png|jpg|jpeg|webp|gif))"?/gi;
+const imageRegex = /^\s*-\s*"?([^"\r\n]+\.(?:png|jpg|jpeg|webp|gif))"?/gim;
 let imgMatch;
 while ((imgMatch = imageRegex.exec(text)) !== null) {
-images.push(imgMatch[1].trim());
+  images.push(imgMatch[1].trim());
 }
 
               const data = {
