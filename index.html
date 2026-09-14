@@ -222,22 +222,18 @@
               const mapLinkMatch = text.match(/map_link:\s*"?([^"\r\n]+)"?/);
               const descMatch = text.match(/description:\s*"?([\s\S]+?)"?(?=\n\w+:|$)/);
 
-              // Çoklu fotoğraf çekme
-              const images = [];
-              const imageRegex = /-\s*"?([^"\r\n]+\.(?:png|jpg|jpeg|webp))"?/gi;
-              let imgMatch;
-              while ((imgMatch = imageRegex.exec(text)) !== null) {
-                images.push(imgMatch[1]);
-              }
-              if (images.length === 0) {
-                const singleImgMatch = text.match(/image:\s*"?([^"\r\n]+)"?/);
-                if (singleImgMatch) images.push(singleImgMatch[1]);
-              }
+        // Çoklu fotoğraf çekme ("images: - image: ..." liste yapısını da, tekil "image:" alanını da yakalar)
+const images = [];
+const imageRegex = /image:\s*"?([^"\r\n]+\.(?:png|jpg|jpeg|webp|gif))"?/gi;
+let imgMatch;
+while ((imgMatch = imageRegex.exec(text)) !== null) {
+images.push(imgMatch[1].trim());
+}}
 
               const data = {
                 title: titleMatch ? titleMatch[1] : 'İlan',
                 price: priceMatch ? priceMatch[1] : '',
-                images: images.length > 0 ? images : ['https://via.placeholder.com/400x300'],
+                images: images.length > 0 ? images : ["data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect width='100%25' height='100%25' fill='%23253347'/%3E%3Ctext x='50%25' y='50%25' fill='%2394a3b8' font-family='sans-serif' font-size='16' text-anchor='middle' dy='.3em'%3EFotoğraf yok%3C/text%3E%3C/svg%3E"],
                 category: categoryMatch ? categoryMatch[1] : 'Satılık',
                 location: locationMatch ? locationMatch[1] : 'Eskişehir',
                 map_link: normalizeMapLink(mapLinkMatch ? mapLinkMatch[1] : ''),
